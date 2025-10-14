@@ -74,7 +74,7 @@ const AuthForm = ({ mode = "signIn", onSubmit }) => {
 
       // Redirect based on mode
       if (mode === "signIn" || mode === "signUp") {
-        router.push("/dashboard");
+        router.push("/scrolls");
       }
     } catch (err) {
       console.error("Auth error:", err);
