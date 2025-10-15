@@ -19,6 +19,7 @@ export async function GET(request) {
     // Verify the ID token
     const decodedToken = await adminAuth.verifyIdToken(token);
     const userId = decodedToken.uid; // User is signed in, we have their UID
+    console.log(`Authenticated user ID: ${userId}`);
     const userRecord = await adminAuth.getUser(userId);
 
     // Get the 'type' query parameter
