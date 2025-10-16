@@ -25,19 +25,36 @@ export default class Scroll {
     if (verseUrl) this.verseUrl = verseUrl; // Optional verse URL (for Bible Verses)
     if (mapUrl) this.mapUrl = mapUrl; // Optional map URL (for Moments with location)
   }
+  removeNulls(obj) {
+    const cleanObj = {};
+    for (const [key, value] of Object.entries(obj)) {
+      if (
+        value !== null &&
+        value !== undefined &&
+        typeof value !== "function"
+      ) {
+        cleanObj[key] = value;
+      }
+    }
+    return cleanObj;
+  }
 
   toJSON() {
-    return {
+    const obj = {
       type: this.type,
       content: this.content,
-      createdAt: this.createdAt,
+      createdAt:
+        this.createdAt instanceof Date
+          ? this.createdAt.toISOString()
+          : this.createdAt,
       id: this.id || null,
       username: this.username,
       imageUrl: this.imageUrl || null,
       location: this.location || null,
-      songUrl: this.songUrl || null, // Null if not provided
-      verseUrl: this.verseUrl || null, // Null if not provided
-      mapUrl: this.mapUrl || null, // Null if not provided
+      songUrl: this.songUrl || null,
+      verseUrl: this.verseUrl || null,
+      mapUrl: this.mapUrl || null,
     };
+    return this.removeNulls(obj);
   }
 }

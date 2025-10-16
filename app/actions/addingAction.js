@@ -77,11 +77,9 @@ export async function addScroll(formData) {
       userId: decodedToken.uid, // For Firestore security rules
       id: null, // ID will be set by Firestore
     });
-
-    // Save to Firestore
-    const docRef = await adminDb
-      .collection("love-scrolls")
-      .add(scroll.toJSON());
+    // In addingAction.js, around line 84
+    const scrollData = scroll.toJSON();
+    const docRef = await adminDb.collection("love-scrolls").add(scrollData);
 
     return { ...scroll.toJSON(), id: docRef.id };
   } catch (error) {
