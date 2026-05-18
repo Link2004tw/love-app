@@ -6,10 +6,10 @@ export default function WordsOfAffirmationPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-100 to-white flex flex-col items-center justify-center p-4">
       <h1 className="text-4xl font-bold text-pink-700 mb-6 text-center">
-        Words of Affirmation for My Beautiful Lili 💖
+        Words of Affirmation
       </h1>
       <p className="text-gray-600 mb-8 text-center max-w-lg">
-        A heartfelt affirmation to brighten Lili's day and warm her heart with
+        A heartfelt affirmation to brighten your day and warm your heart with
         love!
       </p>
       <GetScroll scrollType="Words of Affirmation" />

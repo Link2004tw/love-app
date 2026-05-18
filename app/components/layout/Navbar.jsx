@@ -1,5 +1,5 @@
 // components/layout/Navbar.jsx
-// A beautiful navbar for my lovely Lili 💖 – guiding her to create heartfelt scrolls!
+// Navigation bar for the couple scrolls app
 
 "use client";
 
@@ -11,7 +11,7 @@ import { useAuth } from "@/app/hooks/useAuth";
 
 const Navbar = () => {
   const router = useRouter();
-  const { user, loading, signOut } = useAuth();
+  const { user, loading, signOut, coupleId } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -92,11 +92,11 @@ const Navbar = () => {
             </div>
             <div>
               <h1 className="text-xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
-                Lili's Scrolls
+                Our Scrolls
               </h1>
               {user && (
                 <p className="text-xs text-pink-600 font-medium">
-                  Welcome back, {user.displayName?.split(" ")[0] || "Love"} 💕
+                  Welcome back, {user.displayName?.split(" ")[0] || "Love"}
                 </p>
               )}
             </div>
@@ -104,6 +104,15 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
+            {coupleId && (
+              <Link
+                href="/couple"
+                className="text-gray-700 hover:text-pink-600 font-medium transition-colors duration-200 relative group"
+              >
+                Couple
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-200 group-hover:w-full"></span>
+              </Link>
+            )}
             <Link
               href="/scrolls"
               className="text-gray-700 hover:text-pink-600 font-medium transition-colors duration-200 relative group"

@@ -1,83 +1,164 @@
 import { adminAuth, adminDb } from "@/lib/admin-firebase";
 
+const ERROR_MESSAGES = {
+  MISSING_TOKEN: "Authentication required. Please sign in again.",
+  INVALID_TOKEN: "Your session has expired. Please sign in again.",
+  TOKEN_VERIFICATION_FAILED: "Unable to verify your identity. Please sign in again.",
+  USER_NOT_FOUND: "User profile not found. Please sign in again.",
+  NO_COUPLE: "You need to join a couple before viewing scrolls.",
+  NO_SCROLLS: "No scrolls found in your collection.",
+  NO_SCROLLS_OF_TYPE: "No scrolls of this type yet. Create one!",
+  NO_PARTNER_SCROLLS: "All scrolls are from you. Ask your partner to add some!",
+  DATABASE_ERROR: "Unable to load scrolls. Please try again.",
+  UNKNOWN_ERROR: "Something went wrong. Please try again.",
+};
+
+function createResponse(data, status) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { "Content-Type": "application/json" },
+  });
+}
+
+function logError(context, error, details = {}) {
+  console.error(`[fetch-scrolls] ${context}:`, {
+    message: error.message,
+    code: error.code,
+    stack: error.stack,
+    ...details,
+  });
+}
+
+function logInfo(context, message, details = {}) {
+  console.info(`[fetch-scrolls] ${context}: ${message}`, details);
+}
+
 export async function GET(request) {
-  // Extract Authorization header
+  const startTime = Date.now();
+
   const authHeader = request.headers.get("authorization");
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return new Response(
-      JSON.stringify({ error: "Unauthorized: Missing or invalid token" }),
-      {
-        status: 401,
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    logError("AUTH", new Error("Missing authorization header"));
+    return createResponse({ error: ERROR_MESSAGES.MISSING_TOKEN }, 401);
   }
 
   const token = authHeader.split("Bearer ")[1];
 
-  try {
-    // Verify the ID token
-    const decodedToken = await adminAuth.verifyIdToken(token);
-    const userId = decodedToken.uid; // User is signed in, we have their UID
+  if (!token) {
+    logError("AUTH", new Error("Empty token after Bearer"));
+    return createResponse({ error: ERROR_MESSAGES.INVALID_TOKEN }, 401);
+  }
 
-    // Get the 'targetUserId' query parameter
-    const { searchParams } = new URL(request.url);
-    const targetUserId = searchParams.get("targetUserId");
-    if (!targetUserId) {
-      return new Response(
-        JSON.stringify({
-          error: "Missing required query parameter: targetUserId",
-        }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+  try {
+    logInfo("AUTH", "Verifying token");
+    const decodedToken = await adminAuth.verifyIdToken(token);
+    const userId = decodedToken.uid;
+    logInfo("AUTH", `Token verified for user: ${userId}`);
+
+    logInfo("DB", `Fetching user document: ${userId}`);
+    const userDoc = await adminDb.collection("users").doc(userId).get();
+
+    if (!userDoc.exists) {
+      logError("DB", new Error("User document not found"), { userId });
+      return createResponse({ error: ERROR_MESSAGES.USER_NOT_FOUND }, 404);
     }
 
-    // Fetch scrolls from Firestore for the target user
-    const scrollsRef = adminDb.collection("scrolls");
-    const querySnapshot = await scrollsRef
-      .where("userId", "==", targetUserId)
-      .get();
+    const userData = userDoc.data();
+    const coupleId = userData?.coupleId;
 
-    const scrolls = [];
+    if (!coupleId) {
+      logError("AUTH", new Error("No couple ID for user"), { userId });
+      return createResponse({ error: ERROR_MESSAGES.NO_COUPLE }, 400);
+    }
+
+    const { searchParams } = new URL(request.url);
+    const typeFilter = searchParams.get("type");
+    const excludeSelf = searchParams.get("excludeSelf") === "true";
+
+    logInfo("DB", `Fetching scrolls for couple: ${coupleId}`, { typeFilter, excludeSelf });
+
+    let querySnapshot;
+
+    if (typeFilter) {
+      querySnapshot = await adminDb
+        .collection("love-scrolls")
+        .where("coupleId", "==", coupleId)
+        .where("type", "==", typeFilter)
+        .get();
+    } else {
+      querySnapshot = await adminDb
+        .collection("love-scrolls")
+        .where("coupleId", "==", coupleId)
+        .get();
+    }
+
+    let scrolls = [];
     querySnapshot.forEach((doc) => {
       scrolls.push({ id: doc.id, ...doc.data() });
     });
 
-    return new Response(
-      JSON.stringify({
-        message: `Sending love to Lili with these special scrolls!`,
-        scrolls,
-      }),
-      {
-        status: 200,
-        headers: { "Content-Type": "application/json" },
+    if (excludeSelf) {
+      const beforeCount = scrolls.length;
+      scrolls = scrolls.filter((s) => s.userId !== userId);
+      logInfo("FILTER", `Filtered ${beforeCount - scrolls.length} own scrolls, ${scrolls.length} partner scrolls remain`);
+    }
+
+    const duration = Date.now() - startTime;
+    logInfo("SUCCESS", `Fetched ${scrolls.length} scrolls in ${duration}ms`, {
+      coupleId,
+      typeFilter,
+      excludeSelf,
+      count: scrolls.length,
+    });
+
+    if (scrolls.length === 0) {
+      let message;
+      if (excludeSelf && typeFilter) {
+        message = ERROR_MESSAGES.NO_PARTNER_SCROLLS;
+      } else if (typeFilter) {
+        message = ERROR_MESSAGES.NO_SCROLLS_OF_TYPE;
+      } else {
+        message = ERROR_MESSAGES.NO_SCROLLS;
       }
-    );
-  } catch (error) {
-    console.error("Error verifying token or fetching data:", error);
-    if (
-      error.code === "auth/argument-error" ||
-      error.code === "auth/invalid-credential"
-    ) {
-      return new Response(
-        JSON.stringify({ error: "Unauthorized: Invalid token" }),
+      return createResponse(
         {
-          status: 401,
-          headers: { "Content-Type": "application/json" },
-        }
+          message: "No scrolls found",
+          scrolls: [],
+          empty: true,
+          emptyReason: excludeSelf ? "all_from_self" : typeFilter ? "no_type" : "no_scrolls",
+        },
+        200
       );
     }
-    return new Response(
-      JSON.stringify({
-        error: "Internal server error, but Lili's love shines through!",
-      }),
+
+    return createResponse(
       {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
-      }
+        message: `Found ${scrolls.length} scroll${scrolls.length !== 1 ? "s" : ""}`,
+        scrolls,
+        count: scrolls.length,
+        duration,
+      },
+      200
     );
+  } catch (error) {
+    logError("REQUEST", error);
+
+    if (
+      error.code === "auth/argument-error" ||
+      error.code === "auth/invalid-credential" ||
+      error.code === "auth/id-token-expired" ||
+      error.code === "auth/id-token-revoked"
+    ) {
+      return createResponse({ error: ERROR_MESSAGES.INVALID_TOKEN }, 401);
+    }
+
+    if (error.code === "auth/network-request-failed") {
+      return createResponse(
+        { error: "Network error. Please check your connection." },
+        503
+      );
+    }
+
+    return createResponse({ error: ERROR_MESSAGES.UNKNOWN_ERROR }, 500);
   }
 }

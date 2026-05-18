@@ -9,7 +9,7 @@ export default function PoemPage() {
       </main>
       <footer className="py-6 text-center text-sm text-gray-500">
         <p>
-          Crafted with boundless love and poetic whispers for my lovely Lili 💕
+          Crafted with love and poetic whispers
         </p>
       </footer>
     </div>

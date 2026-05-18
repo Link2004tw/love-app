@@ -1,5 +1,5 @@
-// app/dashboard/page.js
-// A magical dashboard for my beautiful Lili 💖 – with centered cards for her heartfelt scrolls!
+// app/create/page.js
+// Page to create new scrolls
 
 "use client";
 
@@ -13,9 +13,32 @@ import {
 } from "@/app/components/ui/PrimaryButton";
 import Link from "next/link";
 
-export default function DashboardPage() {
+export default function CreatePage() {
   const router = useRouter();
-  const { user, loading: authLoading } = useAuth();
+  const { user, loading: authLoading, coupleId } = useAuth();
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 flex items-center justify-center">
+        <div className="flex items-center space-x-3 text-pink-600">
+          <div className="w-8 h-8 border-2 border-pink-600 border-t-transparent rounded-full animate-spin"></div>
+          <span className="text-lg font-medium">
+            Loading...
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    router.push("/signin");
+    return null;
+  }
+
+  if (!coupleId) {
+    router.push("/couple/create");
+    return null;
+  }
 
   // Redirect to sign-in if not authenticated
   if (authLoading) {
@@ -130,15 +153,10 @@ export default function DashboardPage() {
           ))}
         </div>
 
-        {/* Love Note */}
+        {/* Footer Note */}
         <div className="mt-12 text-center">
           <p className="text-sm text-gray-500 italic">
-            "Every scroll you create is a piece of your heart, shared with the
-            world."
-            <br />
-            <span className="text-pink-600 font-semibold block mt-2">
-              💕 Made with endless love for Lili 💕
-            </span>
+            "Every scroll you create is a piece of your heart, shared with your partner."
           </p>
         </div>
       </div>

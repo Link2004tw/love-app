@@ -1,0 +1,731 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "eslint.config.mjs",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/eslint.config.mjs",
+      "id": "E:/coding/loving-app/eslint.config.mjs",
+      "community": 0,
+      "norm_label": "eslint.config.mjs"
+    },
+    {
+      "label": "next.config.mjs",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/next.config.mjs",
+      "id": "E:/coding/loving-app/next.config.mjs",
+      "community": 0,
+      "norm_label": "next.config.mjs"
+    },
+    {
+      "label": "postcss.config.mjs",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/postcss.config.mjs",
+      "id": "E:/coding/loving-app/postcss.config.mjs",
+      "community": 0,
+      "norm_label": "postcss.config.mjs"
+    },
+    {
+      "label": "tailwind.config.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/tailwind.config.js",
+      "id": "E:/coding/loving-app/tailwind.config.js",
+      "community": 0,
+      "norm_label": "tailwind.config.js"
+    },
+    {
+      "label": "layout.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/layout.jsx",
+      "id": "E:/coding/loving-app/app/layout.jsx",
+      "community": 4,
+      "norm_label": "layout.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/page.jsx",
+      "id": "E:/coding/loving-app/app/page.jsx",
+      "community": 5,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "addingAction.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/actions/addingAction.js",
+      "id": "E:/coding/loving-app/app/actions/addingAction.js",
+      "community": 6,
+      "norm_label": "addingaction.js"
+    },
+    {
+      "label": "userAction.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/actions/userAction.js",
+      "id": "E:/coding/loving-app/app/actions/userAction.js",
+      "community": 7,
+      "norm_label": "useraction.js"
+    },
+    {
+      "label": "route.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/api/couple/route.js",
+      "id": "E:/coding/loving-app/app/api/couple/route.js",
+      "community": 8,
+      "norm_label": "route.js"
+    },
+    {
+      "label": "route.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/api/couple/join/route.js",
+      "id": "E:/coding/loving-app/app/api/couple/join/route.js",
+      "community": 9,
+      "norm_label": "route.js"
+    },
+    {
+      "label": "route.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/api/couple/partner/route.js",
+      "id": "E:/coding/loving-app/app/api/couple/partner/route.js",
+      "community": 10,
+      "norm_label": "route.js"
+    },
+    {
+      "label": "route.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/api/fetch-random/route.js",
+      "id": "E:/coding/loving-app/app/api/fetch-random/route.js",
+      "community": 11,
+      "norm_label": "route.js"
+    },
+    {
+      "label": "route.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/api/fetch-scrolls/route.js",
+      "id": "E:/coding/loving-app/app/api/fetch-scrolls/route.js",
+      "community": 12,
+      "norm_label": "route.js"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/auth/page.jsx",
+      "id": "E:/coding/loving-app/app/auth/page.jsx",
+      "community": 13,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "AuthForm.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/components/auth/AuthForm.jsx",
+      "id": "E:/coding/loving-app/app/components/auth/AuthForm.jsx",
+      "community": 14,
+      "norm_label": "authform.jsx"
+    },
+    {
+      "label": "AuthLayout.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/components/auth/AuthLayout.jsx",
+      "id": "E:/coding/loving-app/app/components/auth/AuthLayout.jsx",
+      "community": 15,
+      "norm_label": "authlayout.jsx"
+    },
+    {
+      "label": "index.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/components/auth/index.js",
+      "id": "E:/coding/loving-app/app/components/auth/index.js",
+      "community": 16,
+      "norm_label": "index.js"
+    },
+    {
+      "label": "AuthProvidor.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/components/layout/AuthProvidor.jsx",
+      "id": "E:/coding/loving-app/app/components/layout/AuthProvidor.jsx",
+      "community": 17,
+      "norm_label": "authprovidor.jsx"
+    },
+    {
+      "label": "Navbar.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/components/layout/Navbar.jsx",
+      "id": "E:/coding/loving-app/app/components/layout/Navbar.jsx",
+      "community": 18,
+      "norm_label": "navbar.jsx"
+    },
+    {
+      "label": "ToastProvider.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/components/providers/ToastProvider.jsx",
+      "id": "E:/coding/loving-app/app/components/providers/ToastProvider.jsx",
+      "community": 19,
+      "norm_label": "toastprovider.jsx"
+    },
+    {
+      "label": "ButtonVariants.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/components/ui/ButtonVariants.jsx",
+      "id": "E:/coding/loving-app/app/components/ui/ButtonVariants.jsx",
+      "community": 20,
+      "norm_label": "buttonvariants.jsx"
+    },
+    {
+      "label": "FetchScroll.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/components/ui/FetchScroll.jsx",
+      "id": "E:/coding/loving-app/app/components/ui/FetchScroll.jsx",
+      "community": 21,
+      "norm_label": "fetchscroll.jsx"
+    },
+    {
+      "label": "PrimaryButton.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/components/ui/PrimaryButton.jsx",
+      "id": "E:/coding/loving-app/app/components/ui/PrimaryButton.jsx",
+      "community": 22,
+      "norm_label": "primarybutton.jsx"
+    },
+    {
+      "label": "ScrollCard.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/components/ui/ScrollCard.jsx",
+      "id": "E:/coding/loving-app/app/components/ui/ScrollCard.jsx",
+      "community": 23,
+      "norm_label": "scrollcard.jsx"
+    },
+    {
+      "label": "ScrollFrom.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/components/ui/ScrollFrom.jsx",
+      "id": "E:/coding/loving-app/app/components/ui/ScrollFrom.jsx",
+      "community": 24,
+      "norm_label": "scrollfrom.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/couple/page.jsx",
+      "id": "E:/coding/loving-app/app/couple/page.jsx",
+      "community": 25,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/couple/create/page.jsx",
+      "id": "E:/coding/loving-app/app/couple/create/page.jsx",
+      "community": 26,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/couple/join/page.jsx",
+      "id": "E:/coding/loving-app/app/couple/join/page.jsx",
+      "community": 27,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/create/page.jsx",
+      "id": "E:/coding/loving-app/app/create/page.jsx",
+      "community": 28,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/create/lyric/page.jsx",
+      "id": "E:/coding/loving-app/app/create/lyric/page.jsx",
+      "community": 29,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/create/moment/page.jsx",
+      "id": "E:/coding/loving-app/app/create/moment/page.jsx",
+      "community": 30,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/create/poem/page.jsx",
+      "id": "E:/coding/loving-app/app/create/poem/page.jsx",
+      "community": 31,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/create/verse/page.jsx",
+      "id": "E:/coding/loving-app/app/create/verse/page.jsx",
+      "community": 32,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/create/words-of-affirmation/page.jsx",
+      "id": "E:/coding/loving-app/app/create/words-of-affirmation/page.jsx",
+      "community": 33,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "useAuth.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/hooks/useAuth.js",
+      "id": "E:/coding/loving-app/app/hooks/useAuth.js",
+      "community": 34,
+      "norm_label": "useauth.js"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/profile/page.jsx",
+      "id": "E:/coding/loving-app/app/profile/page.jsx",
+      "community": 35,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/scrolls/page.jsx",
+      "id": "E:/coding/loving-app/app/scrolls/page.jsx",
+      "community": 36,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/scrolls/affirmation/page.jsx",
+      "id": "E:/coding/loving-app/app/scrolls/affirmation/page.jsx",
+      "community": 37,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/scrolls/lyrics/page.jsx",
+      "id": "E:/coding/loving-app/app/scrolls/lyrics/page.jsx",
+      "community": 38,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/scrolls/moment/page.jsx",
+      "id": "E:/coding/loving-app/app/scrolls/moment/page.jsx",
+      "community": 39,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/scrolls/poem/page.jsx",
+      "id": "E:/coding/loving-app/app/scrolls/poem/page.jsx",
+      "community": 40,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/scrolls/verse/page.jsx",
+      "id": "E:/coding/loving-app/app/scrolls/verse/page.jsx",
+      "community": 41,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/signin/page.jsx",
+      "id": "E:/coding/loving-app/app/signin/page.jsx",
+      "community": 42,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "page.jsx",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/app/signup/page.jsx",
+      "id": "E:/coding/loving-app/app/signup/page.jsx",
+      "community": 43,
+      "norm_label": "page.jsx"
+    },
+    {
+      "label": "admin-firebase.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/lib/admin-firebase.js",
+      "id": "E:/coding/loving-app/lib/admin-firebase.js",
+      "community": 2,
+      "norm_label": "admin-firebase.js"
+    },
+    {
+      "label": "authErrors.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/lib/authErrors.js",
+      "id": "E:/coding/loving-app/lib/authErrors.js",
+      "community": 2,
+      "norm_label": "autherrors.js"
+    },
+    {
+      "label": "couple.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/lib/couple.js",
+      "id": "E:/coding/loving-app/lib/couple.js",
+      "community": 2,
+      "norm_label": "couple.js"
+    },
+    {
+      "label": "firebase.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/lib/firebase.js",
+      "id": "E:/coding/loving-app/lib/firebase.js",
+      "community": 2,
+      "norm_label": "firebase.js"
+    },
+    {
+      "label": "scroll.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/models/scroll.js",
+      "id": "E:/coding/loving-app/models/scroll.js",
+      "community": 3,
+      "norm_label": "scroll.js"
+    },
+    {
+      "label": "user.js",
+      "file_type": "code",
+      "source_file": "E:/coding/loving-app/models/user.js",
+      "id": "E:/coding/loving-app/models/user.js",
+      "community": 3,
+      "norm_label": "user.js"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "E:/coding/loving-app/README.md",
+      "id": "E:/coding/loving-app/README.md",
+      "community": 0,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "tasks.md",
+      "file_type": "document",
+      "source_file": "E:/coding/loving-app/tasks.md",
+      "id": "E:/coding/loving-app/tasks.md",
+      "community": 0,
+      "norm_label": "tasks.md"
+    },
+    {
+      "label": "auth-flow.md",
+      "file_type": "document",
+      "source_file": "E:/coding/loving-app/docs/auth-flow.md",
+      "id": "E:/coding/loving-app/docs/auth-flow.md",
+      "community": 44,
+      "norm_label": "auth-flow.md"
+    },
+    {
+      "label": "file.svg",
+      "file_type": "image",
+      "source_file": "E:/coding/loving-app/public/file.svg",
+      "id": "E:/coding/loving-app/public/file.svg",
+      "community": 1,
+      "norm_label": "file.svg"
+    },
+    {
+      "label": "globe.svg",
+      "file_type": "image",
+      "source_file": "E:/coding/loving-app/public/globe.svg",
+      "id": "E:/coding/loving-app/public/globe.svg",
+      "community": 1,
+      "norm_label": "globe.svg"
+    },
+    {
+      "label": "next.svg",
+      "file_type": "image",
+      "source_file": "E:/coding/loving-app/public/next.svg",
+      "id": "E:/coding/loving-app/public/next.svg",
+      "community": 1,
+      "norm_label": "next.svg"
+    },
+    {
+      "label": "vercel.svg",
+      "file_type": "image",
+      "source_file": "E:/coding/loving-app/public/vercel.svg",
+      "id": "E:/coding/loving-app/public/vercel.svg",
+      "community": 1,
+      "norm_label": "vercel.svg"
+    },
+    {
+      "label": "window.svg",
+      "file_type": "image",
+      "source_file": "E:/coding/loving-app/public/window.svg",
+      "id": "E:/coding/loving-app/public/window.svg",
+      "community": 1,
+      "norm_label": "window.svg"
+    }
+  ],
+  "links": [
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/eslint.config.mjs",
+      "target": "E:/coding/loving-app/next.config.mjs"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/eslint.config.mjs",
+      "target": "E:/coding/loving-app/postcss.config.mjs"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/eslint.config.mjs",
+      "target": "E:/coding/loving-app/tailwind.config.js"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/eslint.config.mjs",
+      "target": "E:/coding/loving-app/README.md"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/eslint.config.mjs",
+      "target": "E:/coding/loving-app/tasks.md"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/next.config.mjs",
+      "target": "E:/coding/loving-app/postcss.config.mjs"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/next.config.mjs",
+      "target": "E:/coding/loving-app/tailwind.config.js"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/next.config.mjs",
+      "target": "E:/coding/loving-app/README.md"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/next.config.mjs",
+      "target": "E:/coding/loving-app/tasks.md"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/postcss.config.mjs",
+      "target": "E:/coding/loving-app/tailwind.config.js"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/postcss.config.mjs",
+      "target": "E:/coding/loving-app/README.md"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/postcss.config.mjs",
+      "target": "E:/coding/loving-app/tasks.md"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/tailwind.config.js",
+      "target": "E:/coding/loving-app/README.md"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/tailwind.config.js",
+      "target": "E:/coding/loving-app/tasks.md"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "lib",
+      "source": "E:/coding/loving-app/lib/admin-firebase.js",
+      "target": "E:/coding/loving-app/lib/authErrors.js"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "lib",
+      "source": "E:/coding/loving-app/lib/admin-firebase.js",
+      "target": "E:/coding/loving-app/lib/couple.js"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "lib",
+      "source": "E:/coding/loving-app/lib/admin-firebase.js",
+      "target": "E:/coding/loving-app/lib/firebase.js"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "lib",
+      "source": "E:/coding/loving-app/lib/authErrors.js",
+      "target": "E:/coding/loving-app/lib/couple.js"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "lib",
+      "source": "E:/coding/loving-app/lib/authErrors.js",
+      "target": "E:/coding/loving-app/lib/firebase.js"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "lib",
+      "source": "E:/coding/loving-app/lib/couple.js",
+      "target": "E:/coding/loving-app/lib/firebase.js"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "models",
+      "source": "E:/coding/loving-app/models/scroll.js",
+      "target": "E:/coding/loving-app/models/user.js"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "loving-app",
+      "source": "E:/coding/loving-app/README.md",
+      "target": "E:/coding/loving-app/tasks.md"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "public",
+      "source": "E:/coding/loving-app/public/file.svg",
+      "target": "E:/coding/loving-app/public/globe.svg"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "public",
+      "source": "E:/coding/loving-app/public/file.svg",
+      "target": "E:/coding/loving-app/public/next.svg"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "public",
+      "source": "E:/coding/loving-app/public/file.svg",
+      "target": "E:/coding/loving-app/public/vercel.svg"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "public",
+      "source": "E:/coding/loving-app/public/file.svg",
+      "target": "E:/coding/loving-app/public/window.svg"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "public",
+      "source": "E:/coding/loving-app/public/globe.svg",
+      "target": "E:/coding/loving-app/public/next.svg"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "public",
+      "source": "E:/coding/loving-app/public/globe.svg",
+      "target": "E:/coding/loving-app/public/vercel.svg"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "public",
+      "source": "E:/coding/loving-app/public/globe.svg",
+      "target": "E:/coding/loving-app/public/window.svg"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "public",
+      "source": "E:/coding/loving-app/public/next.svg",
+      "target": "E:/coding/loving-app/public/vercel.svg"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "public",
+      "source": "E:/coding/loving-app/public/next.svg",
+      "target": "E:/coding/loving-app/public/window.svg"
+    },
+    {
+      "relation": "same_directory",
+      "confidence": "INFERRED",
+      "confidence_score": 0.5,
+      "source_file": "public",
+      "source": "E:/coding/loving-app/public/vercel.svg",
+      "target": "E:/coding/loving-app/public/window.svg"
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "34809fd527bd50c45274d6c3e35c68e9d8ce668a"
+}

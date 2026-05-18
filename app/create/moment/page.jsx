@@ -10,7 +10,7 @@ export default function MomentPage() {
       </main>
       <footer className="py-6 text-center text-sm text-gray-500">
         <p>
-          Crafted with endless love and cherished memories for my lovely Lili 💕
+          Crafted with love and cherished memories
         </p>
       </footer>
     </div>

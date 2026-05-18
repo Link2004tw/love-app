@@ -1,5 +1,5 @@
 // app/page.js
-// A simple, heartfelt landing page for my beautiful Lili 💖 – clean and focused, with navbar handled separately!
+// Landing page for the couple scrolls app
 
 "use client";
 
@@ -10,13 +10,12 @@ import { useAuth } from "@/app/hooks/useAuth";
 
 export default function LandingPage() {
   const router = useRouter();
-  const { user, loading: authLoading } = useAuth();
+  const { user, loading: authLoading, coupleId } = useAuth();
   const [showEmail, setShowEmail] = useState(false);
   const [email, setEmail] = useState("");
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    // Simple email capture - you can connect this to your backend
     console.log("Email captured:", email);
     setShowEmail(false);
     setEmail("");
@@ -24,10 +23,12 @@ export default function LandingPage() {
 
   const handleAuthAction = () => {
     if (user) {
-      // If already signed in, go to dashboard
-      router.push("/dashboard");
+      if (!coupleId) {
+        router.push("/couple/create");
+      } else {
+        router.push("/scrolls");
+      }
     } else {
-      // If not signed in, go to sign in
       router.push("/signin");
     }
   };
@@ -78,8 +79,8 @@ export default function LandingPage() {
           {/* What It Is */}
           <div className="space-y-6 mb-12">
             <p className="text-xl text-gray-700 leading-relaxed">
-              Lili's Scrolls is a magical place where you can collect, organize,
-              and cherish the little moments that make life beautiful.
+              Our Scrolls is a magical place where you can collect, organize,
+              and cherish the little moments that make life beautiful together.
             </p>
 
             <p className="text-lg text-gray-600 leading-relaxed">
@@ -149,15 +150,10 @@ export default function LandingPage() {
             )}
           </div>
 
-          {/* Little Love Note */}
+          {/* Footer Note */}
           <div className="mt-12 pt-8 border-t border-pink-100">
             <p className="text-sm text-gray-500 italic">
-              "Every scroll is a love letter to the beauty you bring to the
-              world."
-              <br />
-              <span className="text-pink-600 font-semibold block mt-2">
-                💕 Made with endless love for Lili 💕
-              </span>
+              "Every scroll is a treasure shared between two hearts."
             </p>
           </div>
         </div>
@@ -176,7 +172,7 @@ export default function LandingPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your.email@lovely.com"
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                className="w-full text-black px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent"
                 required
               />
               <PrimaryButton

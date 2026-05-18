@@ -1,5 +1,5 @@
 // app/profile/page.js
-// A sweet profile page for Lili to shine with her name 💖
+// Profile page for users
 
 "use client";
 
@@ -129,8 +129,8 @@ export default function ProfilePage() {
                   id="displayName"
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200"
-                  placeholder="e.g., Lili"
+                  className="w-full text-black px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all duration-200"
+                  placeholder="e.g., Your Name"
                   disabled={loading}
                 />
               </div>
@@ -192,14 +192,10 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* Love Note */}
+        {/* Footer Note */}
         <div className="mt-12 text-center">
           <p className="text-sm text-gray-500 italic">
             "Your name is the start of every beautiful story."
-            <br />
-            <span className="text-pink-600 font-semibold block mt-2">
-              💕 Made with endless love for Lili 💕
-            </span>
           </p>
         </div>
       </div>

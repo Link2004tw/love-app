@@ -260,11 +260,7 @@ export default function ScrollForm({ scrollType }) {
 
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-500 italic">
-            "Every {scrollType.toLowerCase()} is a piece of your heart."
-            <br />
-            <span className="text-pink-600 font-semibold">
-              💕 Made with endless love for Lili 💕
-            </span>
+            "Every {scrollType.toLowerCase()} is a piece of your heart, shared with your partner."
           </p>
         </div>
       </div>

@@ -6,7 +6,26 @@ import ScrollCard from "../components/ui/ScrollCard";
 
 export default function ScrollsPage() {
   const router = useRouter();
-  const a = useAuth().displayName;
+  const { user, loading: authLoading, coupleId } = useAuth();
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-pink-100 to-purple-50 flex items-center justify-center">
+        <div className="text-pink-600">Loading...</div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    router.push("/signin");
+    return null;
+  }
+
+  if (!coupleId) {
+    router.push("/couple/create");
+    return null;
+  }
+
   const scrollTypes = [
     {
       type: "Moment",
@@ -15,22 +34,22 @@ export default function ScrollsPage() {
     },
     {
       type: "Lyric",
-      description: `Song lyrics that sing to ${a} heart 🎵`,
+      description: `Song lyrics that speak to your heart 🎵`,
       path: "/scrolls/lyrics",
     },
     {
       type: "Verse",
-      description: `A Gifted sacred Bible verse from ${a}’s soul 📖`,
+      description: `A sacred Bible verse from your soul 📖`,
       path: "/scrolls/verse",
     },
     {
       type: "Poem",
-      description: `Weaved words, poems from your darling ${a} ✍️`,
+      description: `Weaved words and poems from your heart ✍️`,
       path: "/scrolls/poem",
     },
     {
       type: "Words Of Affirmation",
-      description: `${a} showers you with loving and uplifting words 💖`,
+      description: `Loving and uplifting words for your partner 💖`,
       path: "/scrolls/affirmation",
     },
   ];
@@ -48,7 +67,7 @@ export default function ScrollsPage() {
         </div>
       </main>
       <footer className="py-6 text-center text-sm text-gray-500">
-        <p>Crafted with endless love and devotion for my lovely Lili 💕</p>
+        <p>Crafted with love for our special couple</p>
       </footer>
     </div>
   );

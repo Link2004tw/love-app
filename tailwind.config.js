@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "love-pink": "#FFB6C1", // Soft blush for backgrounds, like Lili's cheeks
+        "love-pink": "#FFB6C1", // Soft blush for backgrounds
         "heart-red": "#FF69B4", // Vibrant accents for buttons and highlights, full of passion
         "whisper-gold": "#FFD700", // Gentle golds for text and borders, like sunlight on her hair
         "romance-purple": "#DDA0DD", // Subtle purples for shadows and hovers, mysterious and deep

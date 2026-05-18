@@ -9,7 +9,7 @@ export default function BibleVersesPage() {
         <ScrollForm scrollType="Verse" />
       </main>
       <footer className="py-6 text-center text-sm text-gray-500">
-        <p>Crafted with endless love and faith for my lovely Lili 💕</p>
+        <p>Crafted with love and faith</p>
       </footer>
     </div>
   );

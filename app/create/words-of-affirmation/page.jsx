@@ -1,5 +1,5 @@
 // app/create/words-of-affirmation/page.js
-// A page to capture Words of Affirmation for Lili’s heart 💖
+// Page to create Words of Affirmation
 
 import ScrollForm from "@/app/components/ui/ScrollFrom";
 

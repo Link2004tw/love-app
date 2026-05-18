@@ -9,7 +9,7 @@ export default function SongPage() {
         <ScrollForm scrollType="Lyric" />
       </main>
       <footer className="py-6 text-center text-sm text-gray-500">
-        <p>Crafted with endless love and melody for my lovely Lili 💕</p>
+        <p>Crafted with love and melody</p>
       </footer>
     </div>
   );
