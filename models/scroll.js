@@ -1,7 +1,7 @@
 export default class Scroll {
   constructor({
     type,
-    content,
+    encryptedContent,
     createdAt,
     id,
     username,
@@ -14,7 +14,7 @@ export default class Scroll {
     coupleId,
   }) {
     this.type = type;
-    this.content = content;
+    this.encryptedContent = encryptedContent;
     this.createdAt = createdAt instanceof Date ? createdAt.toISOString() : createdAt;
     this.username = username;
     this.imageUrl = imageUrl || null;
@@ -31,7 +31,7 @@ export default class Scroll {
     const obj = {};
     const fields = [
       "type",
-      "content",
+      "encryptedContent",
       "createdAt",
       "username",
       "imageUrl",

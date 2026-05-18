@@ -104,7 +104,7 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {coupleId && (
+            {!loading && user && coupleId && (
               <Link
                 href="/couple"
                 className="text-gray-700 hover:text-pink-600 font-medium transition-colors duration-200 relative group"
@@ -113,21 +113,25 @@ const Navbar = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-200 group-hover:w-full"></span>
               </Link>
             )}
-            <Link
-              href="/scrolls"
-              className="text-gray-700 hover:text-pink-600 font-medium transition-colors duration-200 relative group"
-            >
-              My Scrolls
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-200 group-hover:w-full"></span>
-            </Link>
+            {!loading && user && (
+              <>
+                <Link
+                  href="/scrolls"
+                  className="text-gray-700 hover:text-pink-600 font-medium transition-colors duration-200 relative group"
+                >
+                  My Scrolls
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-200 group-hover:w-full"></span>
+                </Link>
 
-            <Link
-              href="/create"
-              className="text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200 relative group"
-            >
-              Add Scroll
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-indigo-600 transition-all duration-200 group-hover:w-full"></span>
-            </Link>
+                <Link
+                  href="/create"
+                  className="text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200 relative group"
+                >
+                  Add Scroll
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-indigo-600 transition-all duration-200 group-hover:w-full"></span>
+                </Link>
+              </>
+            )}
 
             {user && (
               <Link
@@ -205,21 +209,35 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden pb-4 border-t border-pink-100">
             <div className="flex flex-col space-y-4 pt-4">
-              <Link
-                href="/scrolls"
-                className="text-gray-700 hover:text-pink-600 py-2 px-2 rounded-lg hover:bg-pink-50 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                My Scrolls
-              </Link>
+              {!loading && user && coupleId && (
+                <Link
+                  href="/couple"
+                  className="text-gray-700 hover:text-pink-600 py-2 px-2 rounded-lg hover:bg-pink-50 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Couple
+                </Link>
+              )}
 
-              <Link
-                href="/create"
-                className="text-gray-700 hover:text-purple-600 py-2 px-2 rounded-lg hover:bg-purple-50 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Add Scroll
-              </Link>
+              {!loading && user && (
+                <>
+                  <Link
+                    href="/scrolls"
+                    className="text-gray-700 hover:text-pink-600 py-2 px-2 rounded-lg hover:bg-pink-50 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    My Scrolls
+                  </Link>
+
+                  <Link
+                    href="/create"
+                    className="text-gray-700 hover:text-purple-600 py-2 px-2 rounded-lg hover:bg-purple-50 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Add Scroll
+                  </Link>
+                </>
+              )}
 
               {user && (
                 <Link

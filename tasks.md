@@ -120,7 +120,23 @@
   - Feature highlights
   - Skip option
 
-### 8.5 Performance & Security
+### 8.6 Encryption - ✅ DONE
+- [x] **8.6.1** Add AES-256-GCM encryption for scroll content
+  - Create `lib/crypto.js` with encrypt/decrypt functions
+  - Use AES-256-GCM with random IV and auth tag
+- [x] **8.6.2** Generate and store encryption key per couple
+  - Generate key on couple creation
+  - Store key in couple document
+  - Pass key to partner on join
+- [x] **8.6.3** Encrypt scroll content on creation
+  - Update `addingAction.js` to encrypt before storing
+  - Update `Scroll` model to use `encryptedContent`
+- [x] **8.6.4** Decrypt scroll content on display
+  - Update `fetch-scrolls` API to decrypt
+  - Update `fetch-random` API to decrypt
+  - Client receives plaintext content
+
+### 8.7 Performance & Security
 - [ ] **8.5.1** Add scroll pagination
   - Lazy loading for scroll lists
   - Infinite scroll option

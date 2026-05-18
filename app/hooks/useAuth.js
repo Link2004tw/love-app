@@ -29,6 +29,7 @@ export const useAuth = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [coupleId, setCoupleId] = useState(null);
+  const [encryptionKey, setEncryptionKey] = useState(null);
 
   const fetchUserData = useCallback(async (uid) => {
     try {
@@ -36,6 +37,7 @@ export const useAuth = () => {
       const userData = await getUserWithAuth(uid);
       if (userData) {
         setCoupleId(userData.coupleId || null);
+        setEncryptionKey(userData.encryptionKey || null);
       }
     } catch (err) {
       console.error("Error fetching user data:", err);
@@ -57,6 +59,7 @@ export const useAuth = () => {
         } else {
           setUser(null);
           setCoupleId(null);
+          setEncryptionKey(null);
         }
 
         if (isActive) {
@@ -83,6 +86,7 @@ export const useAuth = () => {
       await firebaseSignOut(auth);
       setUser(null);
       setCoupleId(null);
+      setEncryptionKey(null);
     } catch (error) {
       console.error("Sign out error:", error);
       setError(error.message);
@@ -100,5 +104,6 @@ export const useAuth = () => {
     email: user?.email,
     uid: user?.uid,
     coupleId,
+    encryptionKey,
   };
 };

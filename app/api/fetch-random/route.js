@@ -1,4 +1,6 @@
 import { adminAuth, adminDb } from "@/lib/admin-firebase";
+import { getCouple } from "@/lib/couple";
+import { decrypt } from "@/lib/crypto";
 
 const ERROR_MESSAGES = {
   MISSING_TOKEN: "Authentication required. Please sign in again.",
@@ -70,6 +72,9 @@ export async function GET(request) {
       return createResponse({ error: ERROR_MESSAGES.NO_COUPLE }, 400);
     }
 
+    const couple = await getCouple(coupleId);
+    const encryptionKey = couple?.encryptionKey;
+
     const { searchParams } = new URL(request.url);
     const typeFilter = searchParams.get("type");
     const excludeSelf = searchParams.get("excludeSelf") === "true";
@@ -118,7 +123,19 @@ export async function GET(request) {
     }
 
     const randomIndex = Math.floor(Math.random() * scrolls.length);
-    const randomScroll = scrolls[randomIndex];
+    let randomScroll = scrolls[randomIndex];
+
+    if (encryptionKey && randomScroll?.encryptedContent) {
+      try {
+        const content = decrypt(randomScroll.encryptedContent, encryptionKey);
+        randomScroll = { ...randomScroll, content };
+      } catch (err) {
+        logError("DECRYPT", err, { scrollId: randomScroll.id });
+        randomScroll = { ...randomScroll, content: "[Decryption failed]" };
+      }
+    } else if (!encryptionKey && randomScroll?.encryptedContent) {
+      randomScroll = { ...randomScroll, content: "[Key not found - please re-login]" };
+    }
 
     const duration = Date.now() - startTime;
     logInfo(

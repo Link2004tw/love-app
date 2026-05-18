@@ -3,6 +3,8 @@
 import { adminAuth, adminDb } from "@/lib/admin-firebase";
 import Scroll from "@/models/scroll";
 import { v2 as cloudinary } from "cloudinary";
+import { getCouple } from "@/lib/couple";
+import { encrypt } from "@/lib/crypto";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -49,6 +51,20 @@ export async function addScroll(formData) {
       return { error: "You need to join a couple before creating scrolls" };
     }
 
+    const couple = await getCouple(coupleId);
+    if (!couple) {
+      return { error: "Couple not found" };
+    }
+
+    let encryptionKey = couple.encryptionKey;
+    if (!encryptionKey) {
+      const { generateKey } = await import("@/lib/crypto");
+      encryptionKey = generateKey();
+      await adminDb.collection("couples").doc(coupleId).update({ encryptionKey });
+    }
+
+    const encryptedContent = encrypt(content, encryptionKey);
+
     const displayName = userData.displayName || decodedToken.name || "Anonymous";
 
     let imageUrl = null;
@@ -74,7 +90,7 @@ export async function addScroll(formData) {
 
     const scroll = new Scroll({
       type,
-      content,
+      encryptedContent,
       createdAt: new Date().toISOString(),
       username: displayName,
       imageUrl,
