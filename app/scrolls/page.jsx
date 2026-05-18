@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../hooks/useAuth";
 import ScrollCard from "../components/ui/ScrollCard";
@@ -7,6 +8,14 @@ import ScrollCard from "../components/ui/ScrollCard";
 export default function ScrollsPage() {
   const router = useRouter();
   const { user, loading: authLoading, coupleId } = useAuth();
+
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push("/signin");
+    } else if (!authLoading && user && !coupleId) {
+      router.push("/couple/create");
+    }
+  }, [authLoading, user, coupleId, router]);
 
   if (authLoading) {
     return (
@@ -16,13 +25,7 @@ export default function ScrollsPage() {
     );
   }
 
-  if (!user) {
-    router.push("/signin");
-    return null;
-  }
-
-  if (!coupleId) {
-    router.push("/couple/create");
+  if (!user || !coupleId) {
     return null;
   }
 

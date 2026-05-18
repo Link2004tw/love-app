@@ -3,6 +3,7 @@
 
 "use client";
 
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../hooks/useAuth";
 import {
@@ -17,6 +18,14 @@ export default function CreatePage() {
   const router = useRouter();
   const { user, loading: authLoading, coupleId } = useAuth();
 
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push("/signin");
+    } else if (!authLoading && user && !coupleId) {
+      router.push("/couple/create");
+    }
+  }, [authLoading, user, coupleId, router]);
+
   if (authLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 flex items-center justify-center">
@@ -30,32 +39,7 @@ export default function CreatePage() {
     );
   }
 
-  if (!user) {
-    router.push("/signin");
-    return null;
-  }
-
-  if (!coupleId) {
-    router.push("/couple/create");
-    return null;
-  }
-
-  // Redirect to sign-in if not authenticated
-  if (authLoading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 flex items-center justify-center">
-        <div className="flex items-center space-x-3 text-pink-600">
-          <div className="w-8 h-8 border-2 border-pink-600 border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-lg font-medium">
-            Loading your magical garden...
-          </span>
-        </div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    router.push("/signin");
+  if (!user || !coupleId) {
     return null;
   }
 

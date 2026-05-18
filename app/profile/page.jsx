@@ -3,7 +3,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/hooks/useAuth";
 import { PrimaryButton } from "@/app/components/ui/PrimaryButton";
@@ -31,8 +31,13 @@ export default function ProfilePage() {
     );
   }
 
-  if (!user) {
-    router.push("/signin");
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push("/signin");
+    }
+  }, [authLoading, user, router]);
+
+  if (authLoading || !user) {
     return null;
   }
 

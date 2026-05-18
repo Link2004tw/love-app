@@ -34,7 +34,10 @@ export async function getUserDocument(uid) {
 
 export async function updateUserCoupleId(uid, coupleId) {
   try {
-    await adminDb.collection("users").doc(uid).update({ coupleId });
+    await adminDb.collection("users").doc(uid).set(
+      { coupleId },
+      { merge: true }
+    );
     return { success: true };
   } catch (error) {
     console.error("Error updating user coupleId:", error);
