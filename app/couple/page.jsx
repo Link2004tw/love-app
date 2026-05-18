@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { AuthLayout } from "@/app/components/auth";
 import { useAuth } from "@/app/hooks/useAuth";
 import { PrimaryButton } from "@/app/components/ui/PrimaryButton";
+import { getCoupleAction, getPartnerAction } from "@/app/actions/coupleAction";
 
 export default function CouplePage() {
   const router = useRouter();
@@ -22,27 +23,16 @@ export default function CouplePage() {
     setFetching(true);
     try {
       const idToken = await user.getIdToken();
-      const response = await fetch("/api/couple", {
-        headers: { Authorization: `Bearer ${idToken}` },
-      });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to fetch couple");
+      const coupleResult = await getCoupleAction(idToken);
+      if (coupleResult.error) {
+        throw new Error(coupleResult.error);
       }
+      setCouple(coupleResult.couple);
 
-      setCouple(data.couple);
-
-      const partnerRes = await fetch(
-        `/api/couple/partner?coupleId=${data.couple.id}&excludeUid=${user.uid}`,
-        {
-          headers: { Authorization: `Bearer ${idToken}` },
-        },
-      );
-      if (partnerRes.ok) {
-        const partnerData = await partnerRes.json();
-        setPartner(partnerData.partner);
+      const partnerResult = await getPartnerAction(idToken);
+      if (partnerResult.success && partnerResult.partner) {
+        setPartner(partnerResult.partner);
       }
     } catch (err) {
       setError(err.message);

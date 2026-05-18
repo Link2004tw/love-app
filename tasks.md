@@ -137,20 +137,43 @@
   - Client receives plaintext content
 
 ### 8.7 Performance & Security
-- [ ] **8.5.1** Add scroll pagination
+- [ ] **8.7.1** Add scroll pagination
   - Lazy loading for scroll lists
   - Infinite scroll option
   - Page size configuration
 
-- [ ] **8.5.2** Add rate limiting
+- [ ] **8.7.2** Add rate limiting
   - API rate limits
   - Per-user throttling
   - Rate limit exceeded handling
 
-- [ ] **8.5.3** Add input sanitization
+- [ ] **8.7.3** Add input sanitization
   - XSS prevention
   - SQL injection prevention (Firestore)
   - Content length limits
+
+### 8.8 API Refactoring & Documentation - ✅ DONE
+- [x] **8.8.1** Create shared API utilities
+  - `lib/api-utils.js` - Centralized error handling, auth, logging
+  - `verifyAuth()` - Extract Firebase token verification
+  - `createResponse()` - Standardized JSON responses
+  - `ERROR_MESSAGES` - Centralized error messages
+  - `getUserData()`, `getCoupleData()` - User/couple fetching helpers
+- [x] **8.8.2** Refactor all API routes
+  - `/api/fetch-scrolls` - Use shared utilities + Swagger docs
+  - `/api/fetch-random` - Use shared utilities + Swagger docs
+  - `/api/couple` - Use shared utilities + Swagger docs
+  - `/api/couple/join` - Use shared utilities + Swagger docs
+  - `/api/couple/partner` - Use shared utilities + Swagger docs
+- [x] **8.8.3** Add Swagger/OpenAPI documentation
+  - `lib/swagger-options.js` - OpenAPI schema definitions
+  - `app/api/docs/route.js` - Swagger UI endpoint at `/api/docs`
+  - JSDoc comments in all API routes for auto-generated docs
+  - Schema definitions for Scroll, Couple, Partner, Error responses
+- [x] **8.8.4** Standardize error responses
+  - Consistent error codes across all endpoints
+  - Structured logging with context tags
+  - Proper HTTP status codes (401, 400, 404, 500, 503)
 
 ## Key Technical Decisions ✅
 
@@ -165,11 +188,16 @@
 
 ### New Files
 - `app/actions/userAction.js` - User document CRUD
+- `app/actions/addingAction.js` - Create scroll server action
+- `app/actions/coupleAction.js` - Server actions for couple management (GET, CREATE, JOIN, PARTNER)
 - `lib/couple.js` - Couple helper functions
 - `lib/authErrors.js` - Firebase auth error mappings
-- `app/api/couple/route.js` - Create/get couple API
-- `app/api/couple/join/route.js` - Join couple API
-- `app/api/couple/partner/route.js` - Get partner info API
+- `lib/api-utils.js` - Shared API utilities (auth, errors, logging)
+- `lib/swagger-options.js` - OpenAPI/Swagger schema definitions
+- `lib/crypto.js` - AES-256-GCM encryption utilities
+- `app/api/docs/route.js` - Swagger UI documentation endpoint
+- `app/api/fetch-scrolls/route.js` - Fetch all scrolls
+- `app/api/fetch-random/route.js` - Fetch random scroll
 - `app/couple/create/page.jsx` - Create couple page
 - `app/couple/join/page.jsx` - Join couple page
 - `app/couple/page.jsx` - Couple management page
@@ -182,16 +210,17 @@
 - `app/signup/page.jsx` - Create user document, redirect to couple create
 - `app/signin/page.jsx` - Check coupleId and redirect appropriately
 - `app/hooks/useAuth.js` - Add coupleId to auth state, proper cleanup
-- `app/actions/addingAction.js` - Add coupleId to scrolls
-- `app/api/fetch-scrolls/route.js` - Query by coupleId
-- `app/api/fetch-random/route.js` - Query by coupleId
-- `app/api/couple/route.js` - Use absolute import paths
+- `app/actions/addingAction.js` - Add coupleId to scrolls, backward compat encryption
+- `app/actions/coupleAction.js` - Server actions for couple CRUD (GET, CREATE, JOIN, PARTNER)
+- `app/api/fetch-scrolls/route.js` - Refactored with shared utilities + Swagger docs
+- `app/api/fetch-random/route.js` - Refactored with shared utilities + Swagger docs
+- `app/api/docs/route.js` - Swagger UI documentation endpoint
 - `app/layout.jsx` - Add ToastProvider
 - `app/page.jsx` - Remove Lili references, add couple redirect
 - `app/profile/page.jsx` - Remove Lili references
 - `app/scrolls/page.jsx` - Remove Lili references, add couple check
 - `app/create/page.jsx` - Add couple check
-- `app/components/layout/Navbar.jsx` - Add couple link, rename to Our Scrolls
+- `app/components/layout/Navbar.jsx` - Auth-aware menu items
 - `app/components/ui/ScrollFrom.jsx` - Remove Lili references
 - `app/components/ui/FetchScroll.jsx` - Remove Lili references
 - `app/scrolls/moment/page.jsx` - Remove Lili references
@@ -205,6 +234,10 @@
 - `app/create/verse/page.jsx` - Remove Lili references
 - `app/create/words-of-affirmation/page.jsx` - Remove Lili references
 - `tailwind.config.js` - Remove Lili comment
-- `app/couple/create/page.jsx` - Use AuthLayout
-- `app/couple/join/page.jsx` - Use AuthLayout
-- `app/couple/page.jsx` - Use AuthLayout
+- `app/couple/create/page.jsx` - Use server actions
+- `app/couple/join/page.jsx` - Use server actions
+- `app/couple/page.jsx` - Use server actions
+- `next.config.mjs` - Fixed turbopack root path
+- `models/scroll.js` - Uses encryptedContent field
+- `lib/swagger-options.js` - Updated for remaining API routes
+- `lib/api-utils.js` - Shared API utilities (auth, errors, logging)

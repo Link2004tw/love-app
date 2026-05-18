@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { AuthLayout } from "@/app/components/auth";
 import { useAuth } from "@/app/hooks/useAuth";
 import { PrimaryButton } from "@/app/components/ui/PrimaryButton";
+import { createCoupleAction } from "@/app/actions/coupleAction";
 
 export default function CreateCouplePage() {
   const router = useRouter();
@@ -21,19 +22,15 @@ export default function CreateCouplePage() {
 
     try {
       const idToken = await user.getIdToken();
-      const response = await fetch("/api/couple", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${idToken}`,
-        },
-        body: JSON.stringify({ name: coupleName }),
-      });
 
-      const data = await response.json();
+      const formData = new FormData();
+      formData.append("idToken", idToken);
+      formData.append("name", coupleName);
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to create couple");
+      const result = await createCoupleAction(formData);
+
+      if (result.error) {
+        throw new Error(result.error);
       }
 
       toast.success("Couple created successfully!");

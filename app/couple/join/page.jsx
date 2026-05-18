@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { AuthLayout } from "@/app/components/auth";
 import { useAuth } from "@/app/hooks/useAuth";
 import { PrimaryButton } from "@/app/components/ui/PrimaryButton";
+import { joinCoupleAction } from "@/app/actions/coupleAction";
 
 export default function JoinCouplePage() {
   const router = useRouter();
@@ -21,19 +22,15 @@ export default function JoinCouplePage() {
 
     try {
       const idToken = await user.getIdToken();
-      const response = await fetch("/api/couple/join", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${idToken}`,
-        },
-        body: JSON.stringify({ inviteCode: inviteCode.trim() }),
-      });
 
-      const data = await response.json();
+      const formData = new FormData();
+      formData.append("idToken", idToken);
+      formData.append("inviteCode", inviteCode.trim());
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to join couple");
+      const result = await joinCoupleAction(formData);
+
+      if (result.error) {
+        throw new Error(result.error);
       }
 
       toast.success("Successfully joined couple!");
