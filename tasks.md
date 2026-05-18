@@ -55,31 +55,86 @@
 
 - [ ] **6.3** Optional: Create default couple for existing data
 
-## Phase 7: Auth Refactoring - ✅ DONE
+## Phase 8: Feature Enhancements - PENDING
 
-- [x] **7.1** Add toast notifications with `react-hot-toast`
-  - Install `react-hot-toast` package
-  - Create `ToastProvider` component
-  - Update all auth forms to show toast on success/error
+### 8.1 Scroll Management
+- [ ] **8.1.1** Add scroll editing capability
+  - Create `app/api/scrolls/[id]/route.js` - Update/delete scroll API
+  - Add edit button to scroll display
+  - Create edit form modal/page
 
-- [x] **7.2** Better Firebase error handling
-  - Create `lib/authErrors.js` with user-friendly error messages
-  - Map Firebase error codes to readable messages
+- [ ] **8.1.2** Add scroll deletion capability
+  - Confirm before delete
+  - Soft delete vs hard delete decision
+  - Delete confirmation toast
 
-- [x] **7.3** Use Firebase Admin SDK for server-side operations
-  - All server actions use `adminDb` from `@/lib/admin-firebase`
-  - Bypass Firestore security rules on server
-  - Add `getUserWithAuth` server action for client-side use
+- [ ] **8.1.3** Add scroll favorites
+  - Add `isFavorite` boolean to scroll model
+  - Create `app/api/scrolls/favorites/route.js` - Fetch favorite scrolls
+  - Create toggle favorite button
+  - Add favorites section to scrolls page
 
-- [x] **7.4** Create reusable auth components
-  - `AuthLayout` - Loading/redirect wrapper for protected pages
-  - `AuthPage` - Wrapper for auth pages (signin/signup) that redirect logged-in users
-  - `AuthForm` - Reusable form without router dependency
+- [x] **8.1.4** Add scroll tags ✅ DONE (Added to tasks, pending implementation)
 
-- [x] **7.5** Fix infinite loop issues
-  - Use `useEffect` for navigation instead of direct `router.push()`
-  - Proper cleanup with `isActive` flag in `useAuth`
-  - Stable dependencies in hooks
+### 8.2 Advanced Features
+- [ ] **8.2.1** Add scroll search
+  - Full-text search on scroll content
+  - Filter by type, date, author
+  - Search results page
+
+- [ ] **8.2.2** Add scroll sharing
+  - Generate shareable link
+  - Copy link to clipboard
+  - Expiration settings
+
+- [ ] **8.2.3** Add scroll analytics
+  - Track scroll views
+  - Most viewed scrolls
+  - Scroll creation trends
+
+### 8.3 Graph Database Integration
+- [ ] **8.3.1** Push graph to Neo4j
+  - Generate Cypher file from graphify output
+  - Create Neo4j import script
+  - Setup Neo4j connection
+  - Real-time sync option
+
+### 8.4 User Experience Improvements
+- [ ] **8.4.1** Add scroll notifications
+  - Notify partner when scroll created
+  - Notification preferences
+  - In-app notification center
+
+- [ ] **8.4.2** Add scroll reminders
+  - Schedule daily/weekly scroll viewing
+  - Email reminders
+  - Reminder customization
+
+- [ ] **8.4.3** Add dark mode toggle
+  - Theme preference storage
+  - System preference detection
+  - Smooth theme transition
+
+- [ ] **8.4.4** Add onboarding tutorial
+  - First-time user flow
+  - Feature highlights
+  - Skip option
+
+### 8.5 Performance & Security
+- [ ] **8.5.1** Add scroll pagination
+  - Lazy loading for scroll lists
+  - Infinite scroll option
+  - Page size configuration
+
+- [ ] **8.5.2** Add rate limiting
+  - API rate limits
+  - Per-user throttling
+  - Rate limit exceeded handling
+
+- [ ] **8.5.3** Add input sanitization
+  - XSS prevention
+  - SQL injection prevention (Firestore)
+  - Content length limits
 
 ## Key Technical Decisions ✅
 
