@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { swaggerSpec } from "@/lib/swagger-options";
 
 export async function GET(request) {
+  if (process.env.NODE_ENV === "production") {
+    return new Response("Not found", { status: 404 });
+  }
+
   const html = `
 <!DOCTYPE html>
 <html lang="en">
